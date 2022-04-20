@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
     #https://stackoverflow.com/questions/18528717/vagrant-shared-and-synced-folders
     control.vm.synced_folder ".", "/vagrant", disabled: true
     control.vm.hostname = "inception"
-    control.vm.network "private_network", ip: "192.168.42.110"
+    config.vm.network "public_network", bridge: "Intel PRO/1000 MT Desktop (82540EM)", ip: "192.168.42.110"
     control.vm.provision :shell, privileged: true, path: "./server.sh"
 
     control.vm.provider "virtualbox" do |v|
